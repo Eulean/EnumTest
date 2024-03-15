@@ -1,0 +1,37 @@
+﻿@model EnumTest.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(m => m.User.Name)
+        @Html.TextBoxFor(m => m.User.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.User.Name)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.User.Email)
+        @Html.TextBoxFor(m => m.User.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.User.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.User.Password)
+        @Html.TextBoxFor(m => m.User.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.User.Password)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.User.GenderId)
+        @Html.DropDownListFor(m => m.User.GenderId, Model.Gender, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.User.GenderId)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+}
